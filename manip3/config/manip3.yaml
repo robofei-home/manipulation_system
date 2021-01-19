@@ -1,0 +1,37 @@
+# Arm
+joint_1:
+  ID: 1
+  Return_Delay_Time: 0
+  Profile_Velocity: 25
+joint_2:
+  ID: 2
+  Return_Delay_Time: 0
+  Profile_Velocity: 25
+joint_3:
+  ID: 3
+  Return_Delay_Time: 0
+  Profile_Velocity: 25
+joint_4:
+  ID: 4
+  Return_Delay_Time: 0
+  Profile_Velocity: 25
+joint_5:
+  ID: 5
+  Return_Delay_Time: 0
+  Profile_Velocity: 25
+joint_6:
+  ID: 6
+  Return_Delay_Time: 0
+  Profile_Velocity: 25
+
+# Gripper
+joint_7:
+  ID: 7
+  Return_Delay_Time: 0
+  Profile_Velocity: 25
+  Current_Limit: 200
+joint_8:
+  ID: 8
+  Return_Delay_Time: 0
+  Profile_Velocity: 25
+  Current_Limit: 200

@@ -1,0 +1,15 @@
+dynamixel_workbench_controllers:
+
+  /include/dynamixel_workbench_controllers/dynamixel_workbench_controllers.h:
+
+    + #include <std_msgs/Empty.h>
+    + ros::Publisher feedback_pub_;
+
+  /src/dynamixel_workbench_controllers.cpp:
+
+    + feedback_pub_ = priv_node_handle_.advertise<std_msgs::Empty>("feedback", 100); (On initPublisher())
+    + std_msgs::Empty msg; (After "Complete Execution")
+    + feedback_pub_.publish(msg); (After "Complete Execution")
+
+    uint8_t cnt = 0;    to uint16_t cnt = 0;
+    uint8_t id_num = 0; to uint16_t id_num = 0;

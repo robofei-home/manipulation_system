@@ -1,0 +1,24 @@
+<launch>
+
+  <!-- DYNAMIXEL CONTROLLER -->
+  <include file="$(find manip3)/launch/dynamixel_controller.launch"/>
+
+  <!-- MOVEIT -->
+  <include file="$(find manip3_moveit_config)/launch/planning_context.launch"/>
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <rosparam param="source_list" subst_value="true">["manip3/joint_states", "head/joint_state"]</rosparam>
+  </node>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+  <include file="$(find manip3_moveit_config)/launch/move_group.launch"/>
+
+  <!-- <include file="$(find manip3_moveit_config)/launch/moveit_rviz.launch">
+    <arg name="rviz_config" value="$(find manip3_moveit_config)/launch/moveit.rviz"/>
+  </include> -->
+
+  <!-- MANIPULATOR INTERFACE -->
+  <node name ="manipulator" pkg="manip3" type="manipulator.py" output="screen"/>
+
+</launch>

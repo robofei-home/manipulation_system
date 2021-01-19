@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: hera_description
+    relative_path: urdf/hera_description.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/hera_description.srdf
+  CONFIG:
+    author_name: brubruguigui
+    author_email: guilhermenmarostica@gmail.com
+    generated_timestamp: 1575490030
