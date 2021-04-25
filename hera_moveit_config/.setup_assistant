@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: hera_description
+    relative_path: robots/hera_full.urdf.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/hera.srdf
+  CONFIG:
+    author_name: equipe top
+    author_email: herarobot@gmai.com
+    generated_timestamp: 1619295761

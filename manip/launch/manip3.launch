@@ -1,0 +1,25 @@
+<launch>
+
+  <!-- DYNAMIXEL CONTROLLER -->
+  <!-- <include file="$(find manip3)/launch/dynamixel_controller.launch"/> -->
+  <include file="$(find hera_moveit_config)/launch/ros_controllers.launch"/>
+
+  <!-- MOVEIT -->
+  <include file="$(find hera_moveit_config)/launch/planning_context.launch"/>
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <rosparam param="source_list" subst_value="true">["manip/joint_states"]</rosparam>
+  </node>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+  <include file="$(find hera_moveit_config)/launch/move_group.launch"/>
+
+  <include file="$(find hera_moveit_config)/launch/moveit_rviz.launch">
+    <arg name="rviz_config" value="$(find hera_moveit_config)/launch/moveit.rviz"/>
+  </include>
+
+  <!-- MANIPULATOR INTERFACE -->
+  <node name ="manipulator" pkg="manip3" type="manipulator.py" output="screen"/>
+
+</launch>
