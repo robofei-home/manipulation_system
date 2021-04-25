@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+
+   <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find hera_moveit_config)/config/gazebo_controllers.yaml" command="load"/>
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find hera_moveit_config)/config/ros_controllers.yaml" command="load"/>
+
+  <!-- Load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" ns="/manip"
+    output="screen" args=" --namespace=/manip
+                    joint_state_controller 
+                    arm_controller 
+                    gripper_controller
+                    --timeout 20 "/>
+
+</launch>
