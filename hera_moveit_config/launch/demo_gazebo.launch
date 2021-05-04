@@ -10,7 +10,7 @@
 
   <!-- By default, we won't load or override the robot_description -->
   <arg name="load_robot_description" default="false"/>
-
+  <!-- teste-->
   <!--
   By default, hide joint_state_publisher's GUI
 
