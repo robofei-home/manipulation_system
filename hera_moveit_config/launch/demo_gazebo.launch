@@ -35,8 +35,9 @@
   </include>
 
   <!-- If needed, broadcast static tf for robot root -->
-  
-
+  <!-- <rosparam command="load" file="$(find hera_description)/config/yaml/hera_control.yaml"/>
+  <rosparam command="load" file="$(find hera_description)/config/yaml/kinect_controller.yaml"/>
+  <rosparam command="load" file="$(find hera_description)/config/yaml/manip_controller.yaml"/> -->
   <!-- We do not have a robot connected, so publish fake joint states -->
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" unless="$(arg use_gui)">
     <rosparam param="source_list">[move_group/fake_controller_joint_states]</rosparam>
