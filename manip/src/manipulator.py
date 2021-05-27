@@ -171,6 +171,7 @@ class Manipulator:
         plan = self.hand.plan()
         success = self.hand.execute(plan, wait=True)
         return success
+    
 
     def handler(self, request):
         type = request.type.lower()
@@ -255,6 +256,24 @@ class Manipulator:
         #     success = self.execute_plan()
         #
         # return 'SUCCEEDED' if success else 'FAILED'
+
+        # def increment_with_contact(self, joint, limit):
+        #     i = limit/100
+        #     joint_value=0.0
+        #     while(not contact or joint_value<limit):
+        #         joint_value = self.group.get_current_joint_values()
+        #         joint[0]+=i
+        #         self.group.set_joint_value_target(joint)
+        #         success = self.execute_plan()
+
+        # def close_gripper2(self):
+        #     finger_1[link1, link2]
+        #     finger_2[link1, link2]
+        #     finger_3[link1, link2]
+        #     for i in range(3):
+        #         for j in range(2):
+        #             joint = 'finger_'+str(i+1)+'['+str(j+1)+']'
+        #             increment_with_contact(self, joint, 1)
 
 
 if __name__ == '__main__':
