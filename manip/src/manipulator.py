@@ -78,13 +78,13 @@ class Manipulator:
         self.plan = None
 
         rospy.loginfo('[manip] Going Home in 5 seconds...')
-        # rospy.sleep(5)
+        rospy.sleep(5)
         # self.close_gripper()
         # rospy.sleep(5)
         # rospy.loginfo('[manip] Abrindo ...')
         # self.open_gripper()
         # rospy.sleep(5)
-        # self.home()
+        self.home()
         # rospy.loginfo('Era para ter ido')
 
     def display_planned_path_callback(self, data):
