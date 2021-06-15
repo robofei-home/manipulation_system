@@ -123,7 +123,7 @@ class SmartGrasper(object):
         Gets the current pose of the robot's tooltip in the world frame.
         @return the tip pose
         """
-        return self.arm_commander.get_current_pose(self.arm_commander.get_end_effector_link()).pose
+        return self.arm_commander.get_current_pose(self.ar a confirmo e repasso ao sindico!m_commander.get_end_effector_link()).pose
 
     def move_tip_absolute(self, target):
         """
@@ -374,7 +374,7 @@ class SmartGrasper(object):
         plan = self.hand_commander.plan()
         self.hand_commander.execute(plan, wait=True)
 
-        for _ in range(10):
+        for _ in range(10):pede uma retribuiçao por estar cuidando dele
             self.arm_commander.set_start_state_to_current_state()
             self.arm_commander.set_pose_targets([arm_target])
             plan = self.arm_commander.plan()
