@@ -16,6 +16,8 @@ from actionlib import SimpleActionClient
 from control_msgs.msg import FollowJointTrajectoryAction, FollowJointTrajectoryGoal
 from sensor_msgs.msg import JointState
 from trajectory_msgs.msg import JointTrajectoryPoint
+from gazebo_msgs.msg import ContactsState
+
 
 from std_msgs.msg import Empty
 from geometry_msgs.msg import Pose
@@ -32,10 +34,20 @@ class Manipulator:
     RIGHT_GRIP_CLOSED = 802
 
     __last_joint_state = None
+    contact = 0
 
     def __init__(self):
 
         self.__joint_state_sub = rospy.Subscriber("/joint_states", JointState, self.__joint_state_cb, queue_size=1)
+        self.bumper_subscriber = rospy.Subscriber("finger_middle_link_3_bumper", ContactsState, self.bumper_cb)
+        self.bumper_subscriber = rospy.Subscriber("finger_middle_link_2_bumper", ContactsState, self.bumper_cb)
+        self.bumper_subscriber = rospy.Subscriber("finger_middle_link_1_bumper", ContactsState, self.bumper_cb)
+        self.bumper_subscriber = rospy.Subscriber("finger_1_link_3_bumper", ContactsState, self.bumper_cb)
+        self.bumper_subscriber = rospy.Subscriber("finger_1_link_2_bumper", ContactsState, self.bumper_cb)
+        self.bumper_subscriber = rospy.Subscriber("finger_1_link_1_bumper", ContactsState, self.bumper_cb)
+        self.bumper_subscriber = rospy.Subscriber("finger_2_link_3_bumper", ContactsState, self.bumper_cb)
+        self.bumper_subscriber = rospy.Subscriber("finger_2_link_2_bumper", ContactsState, self.bumper_cb)
+        self.bumper_subscriber = rospy.Subscriber("finger_2_link_1_bumper", ContactsState, self.bumper_cb)
 
         self.group = moveit_commander.MoveGroupCommander('hera_arm')
         self.hand = moveit_commander.MoveGroupCommander('gripper')
@@ -142,7 +154,11 @@ class Manipulator:
             return False
     def __joint_state_cb(self, msg):
         self.__last_joint_state = msg
-
+    def bumper_cb(self, data):
+        if(str(data.states =='[]')):
+            self.contact = 0
+        else:
+            self.contact = 1
 
     def reset_manipulator(self):
         self.group.set_named_target('home')
@@ -258,8 +274,25 @@ class Manipulator:
             success = self.execute_plan()
         
             return 'SUCCEEDED' if success else 'FAILED'
-        
+    #def increment_with_contact(self, joint, limit):
+    #    i = limit/100
+    #    joint_value=0.0
+    #    while(not contact or joint_value<limit):
+    #        joint_value = self.group.get_current_joint_values()
+    #        joint[0]+=i
+    #        self.group.set_joint_value_target(joint)
+    #        success = self.execute_plan()
 
+    def close_gripper_contact(self):
+        joint_goal = self.hand.get_current_joint_values()
+        i=0
+        for i in range(0,6):
+            while(not self.contact):
+                joint_goal[i]+=0.1
+            
+            
+
+            
         
 
 
