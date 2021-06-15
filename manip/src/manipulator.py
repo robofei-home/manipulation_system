@@ -242,17 +242,17 @@ class Manipulator:
             # self.close_gripper()
             angle = pose.position.x
             joint_goal = self.hand.get_current_joint_values()
-            joint_goal[0] = pose.position.x
-            joint_goal[1] = 0.0
+            rospy.loginfo(joint_goal)
+            joint_goal[0] = 0.5
+            joint_goal[1] = 0.5
             joint_goal[2] = 0.0
-            joint_goal[3] = -0.35
-            joint_goal[4] = 0.0
-            joint_goal[5] = -0.35
-            
-            target_pose = copy.deepcopy(pose)
-            self.group.set_pose_target(target_pose)
-            plan = self.group.plan()
-            success = self.group.execute(plan, wait=True)
+            joint_goal[3] = 0.0
+            joint_goal[4] = 0.7
+            joint_goal[5] = 0.7
+            x=1
+            self.hand.go(joint_goal, wait=False)
+            if(x==1):
+                return 'SUCCEEDED'
         else:
             self.group.set_pose_target(pose)
             success = self.execute_plan()
