@@ -238,23 +238,26 @@ class Manipulator:
         #         self.group.set_named_target('home')
         #         success = self.execute_plan()
         
-        # elif type == 'point':
-        #     self.close_gripper()
-        #     angle = pose.position.x
-        #     joint_goal = self.group.get_current_joint_values()
-        #     joint_goal[0] = angle
-        #     joint_goal[1] = 0.0
-        #     joint_goal[2] = 0.0
-        #     joint_goal[3] = -2.35
-        #     joint_goal[4] = 0.0
-        #     joint_goal[5] = -0.35
-        #     self.group.set_joint_value_target(joint_goal)
-        #     success = self.execute_plan()
-        # else:
-        #     self.group.set_pose_target(pose)
-        #     success = self.execute_plan()
-        #
-        # return 'SUCCEEDED' if success else 'FAILED'
+        elif type == 'point':
+            # self.close_gripper()
+            angle = pose.position.x
+            joint_goal = self.hand.get_current_joint_values()
+            joint_goal[0] = pose.position.x
+            joint_goal[1] = 0.0
+            joint_goal[2] = 0.0
+            joint_goal[3] = -0.35
+            joint_goal[4] = 0.0
+            joint_goal[5] = -0.35
+            self.group.set_joint_value_target(joint_goal)
+            success = self.execute_plan()
+        else:
+            self.group.set_pose_target(pose)
+            success = self.execute_plan()
+        
+            return 'SUCCEEDED' if success else 'FAILED'
+        
+
+        
 
 
 if __name__ == '__main__':
