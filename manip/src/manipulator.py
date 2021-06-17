@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from pickle import TRUE
 import sys
 import copy
 import math
@@ -29,21 +30,26 @@ from manip3.srv import Manip3
 class Manipulator:
 
     __last_joint_state = None
-    bumper_1 = 0
-    bumper_2 = 0
-    bumper_3 = 0
-    bumper_4 = 0
-    bumper_5 = 0
-    bumper_6 = 0
+    # BUMPER_1 = 0
+    # BUMPER_2 = 0
+    # BUMPER_3 = 0
+    # BUMPER_4 = 0
+    # BUMPER_5 = 0
+    # BUMPER_6 = 0
     def __init__(self):
-
+        
+        
+        
+        
+        
+        
         self.__joint_state_sub = rospy.Subscriber("/joint_states", JointState, self.__joint_state_cb, queue_size=1)
-        self.bumper1_subscriber = rospy.Subscriber("finger_middle_link_3_bumper", ContactsState, self.bumper1_cb)
-        self.bumper2_subscriber = rospy.Subscriber("finger_middle_link_2_bumper", ContactsState, self.bumper2_cb)
-        self.bumper3_subscriber = rospy.Subscriber("finger_1_link_3_bumper", ContactsState, self.bumper3_cb)
-        self.bumper4_subscriber = rospy.Subscriber("finger_1_link_2_bumper", ContactsState, self.bumper4_cb)
-        self.bumper5_subscriber = rospy.Subscriber("finger_2_link_3_bumper", ContactsState, self.bumper5_cb)
-        self.bumper6_subscriber = rospy.Subscriber("finger_2_link_2_bumper", ContactsState, self.bumper6_cb)
+        # self.bumper1_subscriber = rospy.Subscriber("finger_middle_link_3_bumper", ContactsState, self.bumper1_cb)
+        # self.bumper2_subscriber = rospy.Subscriber("finger_middle_link_2_bumper", ContactsState, self.bumper2_cb)
+        # self.bumper3_subscriber = rospy.Subscriber("finger_1_link_3_bumper", ContactsState, self.bumper3_cb)
+        # self.bumper4_subscriber = rospy.Subscriber("finger_1_link_2_bumper", ContactsState, self.bumper4_cb)
+        # self.bumper5_subscriber = rospy.Subscriber("finger_2_link_3_bumper", ContactsState, self.bumper5_cb)
+        # self.bumper6_subscriber = rospy.Subscriber("finger_2_link_2_bumper", ContactsState, self.bumper6_cb)
         
         self.group = moveit_commander.MoveGroupCommander('hera_arm')
         self.hand = moveit_commander.MoveGroupCommander('gripper')
@@ -56,11 +62,11 @@ class Manipulator:
         self.__hand_traj_client = SimpleActionClient("/manip/gripper_controller/follow_joint_trajectory", FollowJointTrajectoryAction)
         self.__arm_traj_client = SimpleActionClient("/manip/arm_controller/follow_joint_trajectory", FollowJointTrajectoryAction)
 
-        if self.__hand_traj_client.wait_for_server(timeout=rospy.Duration(4.0)) is False:
+        if self.__hand_traj_client.wait_for_server(timeout=rospy.Duration(60.0)) is False:
             rospy.logfatal("Failed to connect to /gripper_controller/follow_joint_trajectory in 4sec.")
             raise Exception("Failed to connect to /gripper_controller/follow_joint_trajectory in 4sec.")
                                               
-        if self.__arm_traj_client.wait_for_server(timeout=rospy.Duration(4.0)) is False:
+        if self.__arm_traj_client.wait_for_server(timeout=rospy.Duration(60.0)) is False:
             rospy.logfatal("Failed to connect to /arm_controller/follow_joint_trajectory in 4sec.")
             raise Exception("Failed to connect to /arm_controller/follow_joint_trajectory in 4sec.")
 
@@ -69,7 +75,7 @@ class Manipulator:
         self.joint_trajectory = rospy.Publisher('/manip/joint_trajectory', JointTrajectory, queue_size=10)
         self.update_start_state = rospy.Publisher('/rviz/moveit/update_start_state', Empty, queue_size=10)
 
-        rospy.wait_for_service('/get_planning_scene', 10.0)
+        rospy.wait_for_service('/get_planning_scene', 60.0)
         self.__get_planning_scene = rospy.ServiceProxy('/get_planning_scene', GetPlanningScene)
         self.__pub_planning_scene = rospy.Publisher('/planning_scene', PlanningScene, queue_size=10, latch=True)
 
@@ -151,54 +157,62 @@ class Manipulator:
             return False
     def __joint_state_cb(self, msg):
         self.__last_joint_state = msg
-    def bumper1_cb(self, data):
-    #rospy.loginfo(str(data.states))
-        if(str(data.states) == '[]'):
-            self.bumper_1 = 0
-        else:
-            self.bumper_1 = 1
-        if(self.bumper_1):
-            rospy.loginfo('contato')
-    def bumper2_cb(self, data):
-    #rospy.loginfo(str(data.states))
-        if(str(data.states) == '[]'):
-            self.bumper_2 = 0
-        else:
-            self.bumper_2 = 1
-        if(self.bumper_2):
-            rospy.loginfo('contato')
-    def bumper3_cb(self, data):
-    #rospy.loginfo(str(data.states))
-        if(str(data.states) == '[]'):
-            self.bumper_3 = 0
-        else:
-            self.bumper_3 = 1
-        if(self.bumper_3):
-            rospy.loginfo('contato')
-    def bumper4_cb(self, data):
-    #rospy.loginfo(str(data.states))
-        if(str(data.states) == '[]'):
-            self.bumper_4 = 0
-        else:
-            self.bumper_4 = 1
-        if(self.bumper_4):
-            rospy.loginfo('contato')
-    def bumper5_cb(self, data):
-    #rospy.loginfo(str(data.states))
-        if(str(data.states) == '[]'):
-            self.bumper_5 = 0
-        else:
-            self.bumper_5 = 1
-        if(self.bumper_5):
-            rospy.loginfo('contato')
-    def bumper6_cb(self, data):
-    #rospy.loginfo(str(data.states))
-        if(str(data.states) == '[]'):
-            self.bumper_6 = 0
-        else:
-            self.bumper_6 = 1
-        if(self.bumper_6):
-            rospy.loginfo('contato')
+
+    # def bumper1_cb(self, data):
+    # #rospy.loginfo(str(data.states))
+    #     if(str(data.states) == '[]'):
+    #         self.BUMPER_1 = 0
+    #         # self.b1 = 0
+    #     else:
+    #         self.BUMPER_1 = 1
+    #         self.b1 = 1
+
+    # def bumper2_cb(self, data):
+    # #rospy.loginfo(str(data.states))
+    #     if(str(data.states) == '[]'):
+    #         self.BUMPER_2 = 0
+    #         # self.b2 = 0
+    #     else:
+    #         self.BUMPER_2 = 1
+    #         self.b2 = 1
+            
+
+    # def bumper3_cb(self, data):
+    # #rospy.loginfo(str(data.states))
+    #     if(str(data.states) == '[]'):
+    #         self.BUMPER_3 = 0
+    #         # self.b3 = 0
+    #     else:
+    #         self.BUMPER_3 = 1
+    #         self.b3 = 1
+ 
+    # def bumper4_cb(self, data):
+    # #rospy.loginfo(str(data.states))
+    #     if(str(data.states) == '[]'):
+    #         self.BUMPER_4 = 0
+    #         # self.b4 = 0 
+    #     else:
+    #         self.BUMPER_4 = 1
+    #         self.b4 = 1
+
+    # def bumper5_cb(self, data):
+    # #rospy.loginfo(str(data.states))
+    #     if(str(data.states) == '[]'):
+    #         self.BUMPER_5 = 0
+    #         # self.b5 = 0
+    #     else:
+    #         self.BUMPER_5 = 1
+    #         self.b5 = 1
+
+    # def bumper6_cb(self, data):
+    # #rospy.loginfo(str(data.states))
+    #     if(str(data.states) == '[]'):
+    #         self.BUMPER_6 = 0
+    #         # self.b6 = 0
+    #     else:
+    #         self.BUMPER_6 = 1
+    #         self.b6 = 1
+
     def reset_manipulator(self):
         self.group.set_named_target('home')
         plan = self.group.plan()
@@ -247,7 +261,7 @@ class Manipulator:
             success = self.home()
         elif type == 'open':
             success = self.open_gripper()
-        elif type == 'close':
+        elif type == 'old_close':
             success = self.close_gripper()
         elif type == '':
             
@@ -332,48 +346,95 @@ class Manipulator:
             joint_goal[5] = -0.35
             self.group.set_joint_value_target(joint_goal)
             plan = self.group.plan()
-            success = self.group.execute(plan, wait=True)
+            success = self.group.execute(plan, wait=True)      
 
-        elif type == 'bumper':
-            joint_goal = self.hand.get_current_joint_values()
-            # for i in range(0,5):
-            #     x = 'self.bumper_'+str(i+1)
-            #     while(not x):
-            #         joint_goal[i]+=0.1        
-            #         self.hand.set_joint_value_target(joint_goal)
-            #         plan = self.hand.plan()
-            #         success = self.hand.execute(plan, wait=True)
-            b1= self.bumper1_cb
-            b2= self.bumper2_cb
-            b3= self.bumper3_cb
-            b4= self.bumper4_cb
-            b5= self.bumper5_cb
-            b6= self.bumper6_cb
-            x=0
-            while(b1!=1 or b3!=1 or b5!=1):
-                x += 0.03159
-                # if(b1<0.3159):
-                #     joint_goal[0] = x
+        # elif type == 'close':
+        #     joint_goal = self.group.get_current_joint_values()
+        #     x1=0
+        #     x2=0
+        #     x3=0
+        #     x4=0
+        #     x5=0
+        #     x6=0
+        #     xb=0
+        #     xc=0
+        #     self.b1=0
+        #     self.b2=0
+        #     self.b3=0
+        #     self.b4=0
+        #     self.b5=0
+        #     self.b6=0
+        #     while(True):
+        #         if(self.b1!=1):  
+        #             joint_goal[0] = x1
+        #             x1 += 0.03159
+        #             self.hand.set_joint_value_target(joint_goal)
+        #             plan = self.hand.plan()
+        #             success = self.hand.execute(plan, wait=True)
+        #         else:
+        #             xb+=1
+        #         if(self.b3!=1):
+        #             joint_goal[2] = x2
+        #             x2 += 0.03159
+        #             self.hand.set_joint_value_target(joint_goal)
+        #             plan = self.hand.plan()
+        #             success = self.hand.execute(plan, wait=True)
+        #         else:
+        #             xb+=1
+        #         if(self.b5!=1):
+        #             joint_goal[4] = x3
+        #             x3 += 0.03159
+        #             self.hand.set_joint_value_target(joint_goal)
+        #             plan = self.hand.plan()
+        #             success = self.hand.execute(plan, wait=True)
+        #         else:
+        #             xb+=1
+        #         if(xb>=3):
+        #             break
+        #     while(True):
+        #         if(self.b2!=1):  
+        #             joint_goal[1] = x4
+        #             x4 += 0.03159
+        #             self.hand.set_joint_value_target(joint_goal)
+        #             plan = self.hand.plan()
+        #             success = self.hand.execute(plan, wait=True)
+        #         else:
+        #             xc+=1
+        #         if(self.b4!=1):
+        #             joint_goal[3] = x5
+        #             x5 += 0.03159
+        #             self.hand.set_joint_value_target(joint_goal)
+        #             plan = self.hand.plan()
+        #             success = self.hand.execute(plan, wait=True)
+        #         else:
+        #             xc+=1
+        #         if(self.b6!=1):
+        #             joint_goal[5] = x6
+        #             x6 += 0.03159
+        #             self.hand.set_joint_value_target(joint_goal)
+        #             plan = self.hand.plan()
+        #             success = self.hand.execute(plan, wait=True)
+        #         else:
+        #             xc+=1
+        #         if(xc>=3):
+        #             break
+                # elif(self.b1 == 1 and self.b2 == 1 and self.b3 == 1):
+                #     break
+                
+
+                    
+                # if(self.meucu!=1):
+                #     joint_goal[2] = y
+                #     y += 0.03159
                 #     self.hand.set_joint_value_target(joint_goal)
                 #     plan = self.hand.plan()
                 #     success = self.hand.execute(plan, wait=True)
                 
-                # if(b3<0.3159):
-                #     joint_goal[2] = x
-                #     self.hand.set_joint_value_target(joint_goal)
-                #     plan = self.hand.plan()
-                #     success = self.hand.execute(plan, wait=True)
-
-                # if(b5<0.3159):
-                #     joint_goal[4] = x
-                #     self.hand.set_joint_value_target(joint_goal)
-                #     plan = self.hand.plan()
-                #     success = self.hand.execute(plan, wait=True)
-
-
+                # if(b1==1):
+                #     break
                 
 
-            
+
             # joint_goal[0] = 0.3159
             # joint_goal[1] = 0.5960
             # joint_goal[2] = 0.3159
@@ -385,9 +446,10 @@ class Manipulator:
             # success = self.hand.execute(plan, wait=True)
         # else:
         #     self.group.set_pose_target(pose)
-        #     success = self.execute_plan()
+        # #     success = self.execute_plan()
+        # return 'SUCCEEDED' if success else 'FAILED'
         
-        return 'SUCCEEDED' if success else 'FAILED'
+        
 
 
 if __name__ == '__main__':

@@ -3,6 +3,8 @@
 
    <!-- Load joint controller configurations from YAML file to parameter server -->
   <rosparam file="$(find hera_moveit_config)/config/gazebo_controllers.yaml" command="load"/>
+  
+  <rosparam file="$(find hera_moveit_config)/config/pid_controllers.yaml" command="load"/>
 
   <!-- Load joint controller configurations from YAML file to parameter server -->
   <rosparam file="$(find hera_moveit_config)/config/ros_controllers.yaml" command="load"/>
