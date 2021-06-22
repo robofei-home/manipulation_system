@@ -1,44 +1,48 @@
+#pid que nao treme mas ta mto lerdo (funciona bem no empty.world)
+#p:_1.0 
+#i:_0.005
+#d:_0
 manip:
   gazebo_ros_control:
     pid_gains:
-      joint_1: {p: 1.0, i: 0.005, d: 0.00}
-      joint_2: {p: 1.0, i: 0.005, d: 0.00}
-      joint_3: {p: 1.0, i: 0.005, d: 0.00}
-      joint_4: {p: 1.0, i: 0.005, d: 0.00}
-      joint_5: {p: 1.0, i: 0.005, d: 0.00}
-      joint_6: {p: 1.0, i: 0.005, d: 0.00}
-      finger_1_joint_1: {p: 1.0,  d: 0.00, i: 0.005}
-      finger_1_joint_2: {p: 1.0,  d: 0.00, i: 0.005}
-      finger_2_joint_1: {p: 1.0,  d: 0.00, i: 0.005}
-      finger_2_joint_2: {p: 1.0,  d: 0.00, i: 0.005}
-      finger_middle_joint_1: {p: 1.0,  d: 0.00, i: 0.005}
-      finger_middle_joint_2: {p: 1.0,  d: 0.00, i: 0.005}
+      joint_1: {p: 1, i: 0, d: 0}
+      joint_2: {p: 1, i: 0, d: 0}
+      joint_3: {p: 1, i: 0, d: 0}
+      joint_4: {p: 1, i: 0, d: 0}
+      joint_5: {p: 1, i: 0, d: 0}
+      joint_6: {p: 1, i: 0, d: 0}
+      finger_1_joint_1: {p: 1.0,  d: 0.0005, i: 0.1}
+      finger_1_joint_2: {p: 1.0,  d: 0.0005, i: 0.1}
+      finger_2_joint_1: {p: 1.0,  d: 0.0005, i: 0.1}
+      finger_2_joint_2: {p: 1.0,  d: 0.0005, i: 0.1}
+      finger_middle_joint_1: {p: 1.0,  d: 0.0005, i: 0.1}
+      finger_middle_joint_2: {p: 1.0,  d: 0.0005, i: 0.1}
 gazebo_ros_control:
   pid_gains:
-    joint_1: {p: 1.0, i: 0.005, d: 0.00}
-    joint_2: {p: 1.0, i: 0.005, d: 0.00}
-    joint_3: {p: 1.0, i: 0.005, d: 0.00}
-    joint_4: {p: 1.0, i: 0.005, d: 0.00}
-    joint_5: {p: 1.0, i: 0.005, d: 0.00}
-    joint_6: {p: 1.0, i: 0.005, d: 0.00}
-    finger_1_joint_1: {p: 1.0,  d: 0.00, i: 0.005}
-    finger_1_joint_2: {p: 1.0,  d: 0.00, i: 0.005}
-    finger_2_joint_1: {p: 1.0,  d: 0.00, i: 0.005}
-    finger_2_joint_2: {p: 1.0,  d: 0.00, i: 0.005}
-    finger_middle_joint_1: {p: 1.0,  d: 0.00, i: 0.005}
-    finger_middle_joint_2: {p: 1.0,  d: 0.00, i: 0.005}
+    joint_1: {p: 1, i: 0, d: 0}
+    joint_2: {p: 1, i: 0, d: 0}
+    joint_3: {p: 1, i: 0, d: 0}
+    joint_4: {p: 1, i: 0, d: 0}
+    joint_5: {p: 1, i: 0, d: 0}
+    joint_6: {p: 1, i: 0, d: 0}
+    finger_1_joint_1: {p: 1.0,  d: 0.0005, i: 0.1}
+    finger_1_joint_2: {p: 1.0,  d: 0.0005, i: 0.1}
+    finger_2_joint_1: {p: 1.0,  d: 0.0005, i: 0.1}
+    finger_2_joint_2: {p: 1.0,  d: 0.0005, i: 0.1}
+    finger_middle_joint_1: {p: 1.0,  d: 0.0005, i: 0.1}
+    finger_middle_joint_2: {p: 1.0,  d: 0.0005, i: 0.1}
 kinect:
   gazebo_ros_control:
     pid_gains:
-      joint_1: {p: 1.0, i: 0.005, d: 0.00}
-      joint_2: {p: 1.0, i: 0.005, d: 0.00}
-      joint_3: {p: 1.0, i: 0.005, d: 0.00}
-      joint_4: {p: 1.0, i: 0.005, d: 0.00}
-      joint_5: {p: 1.0, i: 0.005, d: 0.00}
-      joint_6: {p: 1.0, i: 0.005, d: 0.00}
-      finger_1_joint_1: {p: 1.0,  d: 0.00, i: 0.005}
-      finger_1_joint_2: {p: 1.0,  d: 0.00, i: 0.005}
-      finger_2_joint_1: {p: 1.0,  d: 0.00, i: 0.005}
-      finger_2_joint_2: {p: 1.0,  d: 0.00, i: 0.005}
-      finger_middle_joint_1: {p: 1.0,  d: 0.00, i: 0.005}
-      finger_middle_joint_2: {p: 1.0,  d: 0.00, i: 0.005}
+      joint_1: {p: 1, i: 0, d: 0}
+      joint_2: {p: 1, i: 0, d: 0}
+      joint_3: {p: 1, i: 0, d: 0}
+      joint_4: {p: 1, i: 0, d: 0}
+      joint_5: {p: 1, i: 0, d: 0}
+      joint_6: {p: 1, i: 0, d: 0}
+      finger_1_joint_1: {p: 1.0,  d: 0.0005, i: 0.1}
+      finger_1_joint_2: {p: 1.0,  d: 0.0005, i: 0.1}
+      finger_2_joint_1: {p: 1.0,  d: 0.0005, i: 0.1}
+      finger_2_joint_2: {p: 1.0,  d: 0.0005, i: 0.1}
+      finger_middle_joint_1: {p: 1.0,  d: 0.0005, i: 0.1}
+      finger_middle_joint_2: {p: 1.0,  d: 0.0005, i: 0.1}
