@@ -272,8 +272,11 @@ class Manipulator:
             # target_pose = self.tf.transformPose('base_link', self.group.get_current_pose()).pose
             
             # success = self.execute_cartesian_plan([target_pose])
-
-            return 'SUCCEEDED' if success else 'FAILED'    
+            if success != None:
+                return 'SUCCEEDED'
+            else:
+                return 'FAILED'
+           
             
         elif type == 'pick':
             
@@ -293,7 +296,11 @@ class Manipulator:
             rospy.sleep(10)
             self.home() 
 
-            return 'SUCCEEDED' if success else 'FAILED'    
+            if success != None:
+                return 'SUCCEEDED'
+            else:
+                return 'FAILED'
+          
             
         elif type == 'place':
             target_pose = copy.deepcopy(pose)
@@ -447,7 +454,10 @@ class Manipulator:
         # else:
         #     self.group.set_pose_target(pose)
         # #     success = self.execute_plan()
-        # return 'SUCCEEDED' if success else 'FAILED'
+        if success != None:
+            return 'SUCCEEDED'
+        else:
+            return 'FAILED'
         
         
 
