@@ -58,6 +58,14 @@
         <joint name="finger_middle_joint_1" value="0" />
         <joint name="finger_middle_joint_2" value="0" />
     </group_state>
+    <group_state name="flora" group="hera_arm">
+        <joint name="joint_1" value="0" />
+        <joint name="joint_2" value="1.1363" />
+        <joint name="joint_3" value="0" />
+        <joint name="joint_4" value="-0.3442" />
+        <joint name="joint_5" value="0" />
+        <joint name="joint_6" value="-0.3862" />
+    </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
     <end_effector name="end_gripper" parent_link="link_6" group="gripper" />
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
