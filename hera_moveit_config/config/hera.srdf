@@ -51,12 +51,12 @@
         <joint name="finger_middle_joint_2" value="0.596" />
     </group_state>
     <group_state name="open_gripper" group="gripper">
-        <joint name="finger_1_joint_1" value="0" />
-        <joint name="finger_1_joint_2" value="0" />
-        <joint name="finger_2_joint_1" value="0" />
-        <joint name="finger_2_joint_2" value="0" />
-        <joint name="finger_middle_joint_1" value="0" />
-        <joint name="finger_middle_joint_2" value="0" />
+        <joint name="finger_1_joint_1" value="-0.2109" />
+        <joint name="finger_1_joint_2" value="0.2585" />
+        <joint name="finger_2_joint_1" value="-0.2109" />
+        <joint name="finger_2_joint_2" value="0.2585" />
+        <joint name="finger_middle_joint_1" value="-0.2109" />
+        <joint name="finger_middle_joint_2" value="0.2585" />
     </group_state>
     <group_state name="flora" group="hera_arm">
         <joint name="joint_1" value="0" />
