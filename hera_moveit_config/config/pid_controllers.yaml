@@ -5,44 +5,44 @@
 manip:
   gazebo_ros_control:
     pid_gains:
-      joint_1: {p: 3.768, i: 7.53, d: 1.88}
-      joint_2: {p: 3.768, i: 7.53, d: 1.88}
-      joint_3: {p: 3.768, i: 7.53, d: 1.88}
-      joint_4: {p: 3.768, i: 7.53, d: 1.88}
-      joint_5: {p: 3.768, i: 7.53, d: 1.88}
-      joint_6: {p: 3.768, i: 7.53, d: 1.88}
-      finger_1_joint_1: {p: 3.768, i: 7.53, d: 1.88}
-      finger_1_joint_2: {p: 3.768, i: 7.53, d: 1.88}
-      finger_2_joint_1: {p: 3.768, i: 7.53, d: 1.88}
-      finger_2_joint_2: {p: 3.768, i: 7.53, d: 1.88}
-      finger_middle_joint_1: {p: 3.768, i: 7.53, d: 1.88}
-      finger_middle_joint_2: {p: 3.768, i: 7.53, d: 1.88}
+      joint_1: {p: 2.7, i: 7.71429, d: 0.23625}
+      joint_2: {p: 2.7, i: 7.94118, d: 0.2295}
+      joint_3: {p: 2.7, i: 7.71429, d: 0.23625}
+      joint_4: {p: 3.3, i: 11.7857, d: 0.231}
+      joint_5: {p: 2.7, i: 7.71429, d: 0.23625}
+      joint_6: {p: 3.3, i: 11.7857, d: 0.231}
+      finger_1_joint_1: {p: 0.0, i: 0.0, d: 0.0}
+      finger_1_joint_2: {p: 0.0, i: 0.0, d: 0.0}
+      finger_2_joint_1: {p: 0.0, i: 0.0, d: 0.0}
+      finger_2_joint_2: {p: 0.0, i: 0.0, d: 0.0}
+      finger_middle_joint_1: {p: 0.0, i: 0.0, d: 0.0}
+      finger_middle_joint_2: {p: 0.0, i: 0.0, d: 0.0}
 gazebo_ros_control:
   pid_gains:
-    joint_1: {p: 3.768, i: 7.53, d: 1.88}
-    joint_2: {p: 3.768, i: 7.53, d: 1.88}
-    joint_3: {p: 3.768, i: 7.53, d: 1.88}
-    joint_4: {p: 3.768, i: 7.53, d: 1.88}
-    joint_5: {p: 3.768, i: 7.53, d: 1.88}
-    joint_6: {p: 3.768, i: 7.53, d: 1.88}
-    finger_1_joint_1: {p: 3.768, i: 7.53, d: 1.88}
-    finger_1_joint_2: {p: 3.768, i: 7.53, d: 1.88}
-    finger_2_joint_1: {p: 3.768, i: 7.53, d: 1.88}
-    finger_2_joint_2: {p: 3.768, i: 7.53, d: 1.88}
-    finger_middle_joint_1: {p: 3.768, i: 7.53, d: 1.88}
-    finger_middle_joint_2: {p: 3.768, i: 7.53, d: 1.88}
+      joint_1: {p: 2.7, i: 7.71429, d: 0.23625}
+      joint_2: {p: 2.7, i: 7.94118, d: 0.2295}
+      joint_3: {p: 2.7, i: 7.71429, d: 0.23625}
+      joint_4: {p: 3.3, i: 11.7857, d: 0.231}
+      joint_5: {p: 2.7, i: 7.71429, d: 0.23625}
+      joint_6: {p: 3.3, i: 11.7857, d: 0.231}
+      finger_1_joint_1: {p: 0.0, i: 0.0, d: 0.0}
+      finger_1_joint_2: {p: 0.0, i: 0.0, d: 0.0}
+      finger_2_joint_1: {p: 0.0, i: 0.0, d: 0.0}
+      finger_2_joint_2: {p: 0.0, i: 0.0, d: 0.0}
+      finger_middle_joint_1: {p: 0.0, i: 0.0, d: 0.0}
+      finger_middle_joint_2: {p: 0.0, i: 0.0, d: 0.0}
 kinect:
   gazebo_ros_control:
     pid_gains:
-      joint_1: {p: 3.768, i: 7.53, d: 1.88}
-      joint_2: {p: 3.768, i: 7.53, d: 1.88}
-      joint_3: {p: 3.768, i: 7.53, d: 1.88}
-      joint_4: {p: 3.768, i: 7.53, d: 1.88}
-      joint_5: {p: 3.768, i: 7.53, d: 1.88}
-      joint_6: {p: 3.768, i: 7.53, d: 1.88}
-      finger_1_joint_1: {p: 3.768, i: 7.53, d: 1.88}
-      finger_1_joint_2: {p: 3.768, i: 7.53, d: 1.88}
-      finger_2_joint_1: {p: 3.768, i: 7.53, d: 1.88}
-      finger_2_joint_2: {p: 3.768, i: 7.53, d: 1.88}
-      finger_middle_joint_1: {p: 3.768, i: 7.53, d: 1.88}
-      finger_middle_joint_2: {p: 3.768, i: 7.53, d: 1.88}
+      joint_1: {p: 2.7, i: 7.71429, d: 0.23625}
+      joint_2: {p: 2.7, i: 7.94118, d: 0.2295}
+      joint_3: {p: 2.7, i: 7.71429, d: 0.23625}
+      joint_4: {p: 3.3, i: 11.7857, d: 0.231}
+      joint_5: {p: 2.7, i: 7.71429, d: 0.23625}
+      joint_6: {p: 3.3, i: 11.7857, d: 0.231}
+      finger_1_joint_1: {p: 0.0, i: 0.0, d: 0.0}
+      finger_1_joint_2: {p: 0.0, i: 0.0, d: 0.0}
+      finger_2_joint_1: {p: 0.0, i: 0.0, d: 0.0}
+      finger_2_joint_2: {p: 0.0, i: 0.0, d: 0.0}
+      finger_middle_joint_1: {p: 0.0, i: 0.0, d: 0.0}
+      finger_middle_joint_2: {p: 0.0, i: 0.0, d: 0.0}
